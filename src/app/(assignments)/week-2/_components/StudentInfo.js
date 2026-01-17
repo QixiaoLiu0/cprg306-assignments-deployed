@@ -8,7 +8,7 @@ export default function StudentInfo() {
       </p>
       <p>
         GitHub Repository:{" "}
-        <Link href="https://github.com/QixiaoLiu0/cprg306-assignments">
+        <Link href="https://github.com/QixiaoLiu0/cprg306-assignments-deployed">
           Click
         </Link>
       </p>
