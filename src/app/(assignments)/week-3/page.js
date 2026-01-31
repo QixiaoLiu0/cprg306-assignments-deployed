@@ -1,6 +1,6 @@
 import ItemList from "./GroceryItemList.js";
 
-export default function Week3Page() {
+export default function Page() {
   return (
     <main className="flex flex-col items-center ">
       <div className="w-full max-w-xl">
