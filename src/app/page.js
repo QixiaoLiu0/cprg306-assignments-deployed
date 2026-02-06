@@ -15,6 +15,9 @@ export default function Home() {
           <li>
             <Link href="/week-4">Week_4</Link>
           </li>
+          <li>
+            <Link href="/week-5">Week_5</Link>
+          </li>
         </ul>
       </nav>
     </main>

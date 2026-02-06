@@ -5,7 +5,7 @@ export default function AssignmentsLayout({ children }) {
         <h1>display area</h1>
       </header> */}
 
-      <main className="yyy">{children}</main>
+      <main id="assignments-section">{children}</main>
     </div>
   );
 }
