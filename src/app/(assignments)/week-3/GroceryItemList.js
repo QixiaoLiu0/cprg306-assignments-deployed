@@ -3,7 +3,7 @@ import items from "./data/item.json";
 
 export default function GroceryItemList() {
   return (
-    <ul>
+    <ul className="w-120">
       {console.log(items)}
 
       {items.map((item, i) => (
