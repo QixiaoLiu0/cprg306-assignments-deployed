@@ -6,15 +6,6 @@ console.log(categories);
 
 export default function ItemList() {
   return (
-    // <ul>
-    //   {items.map(item => (
-    //     <Item
-    //       name={item.name}
-    //       quantity={item.quantity}
-    //       category={item.category}
-    //     />
-    //   ))}
-    // </ul>
     <main>
       {categories.map((cate, index) => (
         <section key={index}>

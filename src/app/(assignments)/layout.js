@@ -5,7 +5,9 @@ export default function AssignmentsLayout({ children }) {
         <h1>display area</h1>
       </header> */}
 
-      <main id="assignments-section">{children}</main>
+      <main className="flex justify-center" id="assignments-section">
+        {children}
+      </main>
     </div>
   );
 }
