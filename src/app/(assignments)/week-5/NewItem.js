@@ -24,7 +24,7 @@ export default function NewItem() {
 
   return (
     <form
-      className="max-w-xl p-4 bg-blue-100 rounded-lg"
+      className="max-w-xl p-4 bg-blue-100 rounded-lg w-200"
       onSubmit={handleSubmit}
     >
       <div className="flex align-center">
