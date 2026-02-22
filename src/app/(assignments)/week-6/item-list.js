@@ -87,7 +87,9 @@ export default function ItemList({ items }) {
             </h1>
             <ul className="p-5 list-disc list-inside pt-0">
               {items
-                .filter(item => item.category.toLowerCase() === cate)
+                .filter(
+                  item => item.category.toLowerCase() === cate.toLowerCase(),
+                )
                 .sort((a, b) => a.name.localeCompare(b.name)) //sort items in the same cate by their names
                 .map(good => (
                   <Item

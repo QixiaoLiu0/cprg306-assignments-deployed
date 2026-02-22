@@ -9,7 +9,7 @@ export default function NewItem({ onAddItem }) {
 
   const updateName = e => setName(e.target.value);
   const updateQty = e => setQuantity(Number(e.target.value));
-  const updateCate = e => setCategory(e.target.value);
+  const updateCate = e => setCategory(e.target.value.toLowerCase());
   const handleSubmit = e => {
     e.preventDefault();
 
