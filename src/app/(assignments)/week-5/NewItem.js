@@ -28,7 +28,7 @@ export default function NewItem() {
       onSubmit={handleSubmit}
     >
       <div className="flex align-center">
-        <label style={{ marginRight: "1.375rem" }} htmlFor="grocery-name">
+        <label className="mr-5" htmlFor="grocery-name">
           Name:{" "}
         </label>
         <input
