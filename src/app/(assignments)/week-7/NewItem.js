@@ -9,15 +9,25 @@ export default function NewItem({ onAddItem }) {
     category: "produce",
   });
 
-  const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState(1);
-  const [category, setCategory] = useState("produce");
+  // const [name, setName] = useState("");
+  // const [quantity, setQuantity] = useState(1);
+  // const [category, setCategory] = useState("produce");
 
-  const updateName = e => setName(e.target.value);
-  const updateCate = e => setCategory(e.target.value.toLowerCase());
+  // const updateName = e => setName(e.target.value);
+  // const updateCate = e => setCategory(e.target.value.toLowerCase());
+
+  const handleChange = e => {
+    setItemState(preState => ({
+      ...preState,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleItemQty = amount => {
-    setQuantity(preQty => preQty + amount);
+    setItemState(preState => ({
+      ...preState,
+      quantity: preState.quantity + amount,
+    }));
   };
 
   const handleSubmit = e => {
@@ -25,13 +35,19 @@ export default function NewItem({ onAddItem }) {
 
     let id = Math.random().toString(36).substring(2, 9);
 
-    let item = { id, name, quantity, category };
+    let item = { id, ...itemState };
     console.log(item);
     onAddItem(item);
 
-    setName("");
-    setQuantity(1);
-    setCategory("produce");
+    // setName("");
+    // setQuantity(1);
+    // setCategory("produce");
+
+    setItemState({
+      name: "",
+      quantity: 1,
+      category: "produce",
+    });
   };
 
   return (
@@ -45,13 +61,13 @@ export default function NewItem({ onAddItem }) {
         </label>
         <input
           id="grocery-name"
-          name=""
+          name="name"
           placeholder="please enter grocery name."
           type="text"
           className="w-full p-2 rounded-md border border-gray-400 mt-1 h-10 mb-3"
           required={true}
-          value={name}
-          onChange={updateName}
+          value={itemState.name}
+          onChange={handleChange}
         />
       </div>
 
@@ -61,14 +77,14 @@ export default function NewItem({ onAddItem }) {
         </label>
         <p>
           <span className="text-sm text-gray-600">Current: </span>
-          <span className="text-xl font-semibold">{quantity}</span>
+          <span className="text-xl font-semibold">{itemState.quantity}</span>
         </p>
         <div className="flex items-center gap-3 my-3">
           <button
             type="button"
             className="rounded px-4 py-2 bg-gray-200 hover:bg-gray-300 disabled:bg-gray-100 disabled:text-gray-400"
             aria-label="Decrease quantity"
-            disabled={quantity < 2}
+            disabled={itemState.quantity < 2}
             onClick={() => handleItemQty(-1)}
             value={"-"}
           >
@@ -79,7 +95,7 @@ export default function NewItem({ onAddItem }) {
             className="rounded px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white disabled:bg-blue-200"
             aria-label="Increase quantity"
             onClick={() => handleItemQty(1)}
-            disabled={quantity > 19}
+            disabled={itemState.quantity > 19}
             value={"+"}
           >
             +
@@ -93,8 +109,9 @@ export default function NewItem({ onAddItem }) {
         <select
           className="p-2 border border-gray-400 rounded-md w-full h-10"
           id="category"
-          value={category}
-          onChange={updateCate}
+          name="category"
+          value={itemState.category}
+          onChange={handleChange}
         >
           <option>Produce</option>
           <option>Dairy</option>
