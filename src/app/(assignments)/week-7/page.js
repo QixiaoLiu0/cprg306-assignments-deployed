@@ -7,7 +7,7 @@ export default function Page() {
   const [items, setItems] = useState(initialItems);
 
   const handleAddItem = newItem => {
-    setItems([...items, newItem]); // 'set' introduces replecing strategy instead of appending
+    setItems(prev => [...prev, newItem]); // 'set' introduces replecing strategy instead of appending
   };
 
   return (
