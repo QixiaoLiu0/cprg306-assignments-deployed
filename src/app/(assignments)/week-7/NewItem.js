@@ -3,13 +3,23 @@
 import { useState } from "react";
 
 export default function NewItem({ onAddItem }) {
+  const [itemState, setItemState] = useState({
+    name: "",
+    quantity: 1,
+    category: "produce",
+  });
+
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
 
   const updateName = e => setName(e.target.value);
-  const updateQty = e => setQuantity(Number(e.target.value));
   const updateCate = e => setCategory(e.target.value.toLowerCase());
+
+  const handleItemQty = amount => {
+    setQuantity(preQty => preQty + amount);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -24,11 +34,6 @@ export default function NewItem({ onAddItem }) {
     setCategory("produce");
   };
 
-  const handleItemQty = e => {
-    let val = e.target.value;
-    setQuantity(preQty => (val == "+" ? preQty + 1 : preQty - 1));
-  };
-
   return (
     <form
       className="max-w-xl p-4 border border-[#d9d9d9] rounded-lg w-140"
@@ -40,6 +45,7 @@ export default function NewItem({ onAddItem }) {
         </label>
         <input
           id="grocery-name"
+          name=""
           placeholder="please enter grocery name."
           type="text"
           className="w-full p-2 rounded-md border border-gray-400 mt-1 h-10 mb-3"
@@ -57,22 +63,13 @@ export default function NewItem({ onAddItem }) {
           <span className="text-sm text-gray-600">Current: </span>
           <span className="text-xl font-semibold">{quantity}</span>
         </p>
-        {/* <input
-          className="p-1 border border-gray-400 rounded-md"
-          id="quantity"
-          type="number"
-          min={1}
-          max={99}
-          value={quantity}
-          onChange={updateQty}
-        /> */}
         <div className="flex items-center gap-3 my-3">
           <button
             type="button"
             className="rounded px-4 py-2 bg-gray-200 hover:bg-gray-300 disabled:bg-gray-100 disabled:text-gray-400"
             aria-label="Decrease quantity"
             disabled={quantity < 2}
-            onClick={handleItemQty}
+            onClick={() => handleItemQty(-1)}
             value={"-"}
           >
             −
@@ -81,7 +78,7 @@ export default function NewItem({ onAddItem }) {
             type="button"
             className="rounded px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white disabled:bg-blue-200"
             aria-label="Increase quantity"
-            onClick={handleItemQty}
+            onClick={() => handleItemQty(1)}
             disabled={quantity > 19}
             value={"+"}
           >
