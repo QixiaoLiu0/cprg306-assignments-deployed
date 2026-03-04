@@ -1,6 +1,6 @@
 "use client";
 
-import Item from "@/app/(assignments)/week-6/item";
+import Item from "@/app/(assignments)/week-7/item";
 import { useState } from "react";
 
 export default function ItemList({ items }) {
