@@ -33,7 +33,11 @@ export default function MealDetails({
       <h2 className="font-bold">Ingredients:</h2>
       <ul>
         {ingredient.map((item, index) => {
-          return <li className="text-gray-700 text-sm">{item}</li>;
+          return (
+            <li key={index} className="text-gray-700 text-sm">
+              {item}
+            </li>
+          );
         })}
       </ul>
     </main>
