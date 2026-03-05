@@ -6,6 +6,18 @@ import MealCard from "./MealCard";
 export default function MealIdeas({ itemName }) {
   const [mealList, setMealList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isOverHalf, setIsOverHalf] = useState(false); // Monitor if the mouse horizontally move over half of the MealCard DOM.
+  const handleMove = e => {
+    let _this = e.currentTarget;
+
+    setIsOverHalf(
+      e.clientX >
+        _this.getBoundingClientRect().left +
+          _this.getBoundingClientRect().width / 2
+        ? true
+        : false,
+    );
+  };
 
   useEffect(() => {
     if (!itemName) return;
@@ -26,9 +38,9 @@ export default function MealIdeas({ itemName }) {
 
     fetchMealIdeas();
   }, [itemName]);
-  console.log(mealList);
+  // console.log(mealList);
   return (
-    <main className="mt-9 ml-2">
+    <main className="mt-9 ml-2" onMouseMove={handleMove}>
       {itemName && (
         <h2 className="text-lg font-semibold">Meal ideas for "{itemName}"</h2>
       )}
@@ -45,6 +57,7 @@ export default function MealIdeas({ itemName }) {
                     key={item.idMeal || index}
                     strMeal={item.strMeal}
                     img={item.strMealThumb}
+                    isOverHalf={isOverHalf}
                   />
                 );
               })}
