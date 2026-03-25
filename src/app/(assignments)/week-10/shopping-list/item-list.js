@@ -3,7 +3,7 @@
 import Item from "./item";
 import { useState } from "react";
 
-export default function ItemList({ items, onItemSelect }) {
+export default function ItemList({ items, onItemSelect, onItemDelete }) {
   const [sortBy, setSortBy] = useState("name");
   const [groupByCate, setGroupByCate] = useState(false);
   const handleSort = e => {
@@ -86,6 +86,7 @@ export default function ItemList({ items, onItemSelect }) {
             onSelect={() => {
               onItemSelect(removeInvalidChars(item.name).split(",")[0].trim());
             }}
+            onDelete={() => onItemDelete(item.id)}
           ></Item>
         ))}
 
@@ -111,6 +112,7 @@ export default function ItemList({ items, onItemSelect }) {
                         removeInvalidChars(good.name).split(",")[0].trim(),
                       );
                     }}
+                    onDelete={() => onItemDelete(good.id)}
                   />
                 ))}
             </ul>

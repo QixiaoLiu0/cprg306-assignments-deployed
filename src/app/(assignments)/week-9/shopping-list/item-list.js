@@ -1,6 +1,6 @@
 "use client";
 
-import Item from "@/app/(assignments)/week-8/item";
+import Item from "./item";
 import { useState } from "react";
 
 export default function ItemList({ items, onItemSelect }) {

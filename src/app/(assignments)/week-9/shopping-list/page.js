@@ -1,8 +1,8 @@
 "use client";
-import ItemList from "@/app/(assignments)/week-8/item-list";
-import NewItem from "@/app/(assignments)/week-8/NewItem";
+import ItemList from "./item-list";
+import NewItem from "./NewItem";
 import { useState } from "react";
-import initialItems from "@/app/(assignments)/week-8/data/items.json";
+import initialItems from "./data/items.json";
 import MealIdeas from "./MealIdeas";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -18,7 +18,7 @@ export default function Page() {
   };
 
   const handleAddItem = newItem => {
-    setItems(prev => [...prev, newItem]); // 'set' introduces replecing strategy instead of appending
+    setItems(prev => [...prev, newItem]);
   };
 
   useEffect(() => {
