@@ -64,17 +64,17 @@ export default function NewItem({ onAddItem }) {
             value={category}
             onChange={updateCate}
           >
-            <option>Produce</option>
-            <option>Dairy</option>
-            <option>Bakery</option>
-            <option>Meat</option>
-            <option>Frozen Foods</option>
-            <option>Canned Goods</option>
-            <option>Dry Goods</option>
-            <option>Beverages</option>
-            <option>Snacks</option>
-            <option>Household</option>
-            <option>Other</option>
+            <option value="">Produce</option>
+            <option value="">Dairy</option>
+            <option value="">Bakery</option>
+            <option value="">Meat</option>
+            <option value="">Frozen Foods</option>
+            <option value="">Canned Goods</option>
+            <option value="">Dry Goods</option>
+            <option value="">Beverages</option>
+            <option value="">Snacks</option>
+            <option value="">Household</option>
+            <option value="">Other</option>
           </select>
         </div>
       </div>
