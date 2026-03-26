@@ -14,9 +14,18 @@ const AuthContext = createContext(); //1. create context obj
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const gitHubSignIn = () => {
+  const gitHubSignIn = async () => {
     const provider = new GithubAuthProvider();
     return signInWithPopup(auth, provider);
+  };
+
+  const handleSignInClick = async () => {
+    try {
+      await gitHubSignIn();
+      console.log("login successfully.");
+    } catch (error) {
+      console.error("login failed:", error.message);
+    }
   };
 
   const firebaseSignOut = () => {
@@ -32,7 +41,7 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     //2. loaded all data need to be boardcast
-    <AuthContext.Provider value={{ user, gitHubSignIn, firebaseSignOut }}>
+    <AuthContext.Provider value={{ user, handleSignInClick, firebaseSignOut }}>
       {children}
     </AuthContext.Provider>
   );

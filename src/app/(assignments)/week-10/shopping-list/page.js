@@ -55,7 +55,11 @@ export default function Page() {
   };
 
   const handleSignOut = async () => {
-    await firebaseSignOut();
+    try {
+      await firebaseSignOut();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
